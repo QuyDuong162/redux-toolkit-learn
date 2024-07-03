@@ -28,7 +28,8 @@ const middleWares = [process.env.NODE_ENV === 'development' && logger].filter(
 
 export const store = configureStore({
   reducer: rootReducer,
-  // middleware: middleWares
+  middleware: (getDefaultMiddleware) => 
+  getDefaultMiddleware().concat(middleWares), //hoac la dung getDefaultMiddleware({serilizableCheck: false}) de tat kiem tra serilizable
 });
 
 // export const persistor = persistStore(store);
